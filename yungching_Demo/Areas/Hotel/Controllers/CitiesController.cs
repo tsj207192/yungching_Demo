@@ -1,63 +1,60 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using yungching_Demo.Entity;
 
-namespace yungching_Demo.Areas
+namespace yungching_Demo.Areas.Hotel.Controllers
 {
-    public class CountriesController : ApiController
+    public class CitiesController : ApiController
     {
         private yungching_DemoEntities db = new yungching_DemoEntities();
 
-        // GET: api/Countries
-        public IQueryable<Country> GetCountry()
+        // GET: api/Cities
+        public IQueryable<City> GetCity()
         {
-            return db.Country;
+            return db.City;
         }
 
-        // GET: api/Countries/5
-        [ResponseType(typeof(Country))]
-        public IHttpActionResult GetCountry(string id)
+        // GET: api/Cities/5
+        [ResponseType(typeof(City))]
+        public async Task<IHttpActionResult> GetCity(string id)
         {
-            Country country = db.Country.Find(id);
-            if (country == null)
+            City city = await db.City.FindAsync(id);
+            if (city == null)
             {
                 return NotFound();
             }
 
-            return Ok(country);
+            return Ok(city);
         }
 
-        // PUT: api/Countries/5
+        // PUT: api/Cities/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutCountry(string id, Country country)
+        public async Task<IHttpActionResult> PutCity(string id, City city)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != country.CountryId)
+            if (id != city.CityId)
             {
                 return BadRequest();
             }
 
-            db.Entry(country).State = EntityState.Modified;
+            db.Entry(city).State = EntityState.Modified;
 
             try
             {
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CountryExists(id))
+                if (!CityExists(id))
                 {
                     return NotFound();
                 }
@@ -70,24 +67,24 @@ namespace yungching_Demo.Areas
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Countries
-        [ResponseType(typeof(Country))]
-        public IHttpActionResult PostCountry(Country country)
+        // POST: api/Cities
+        [ResponseType(typeof(City))]
+        public async Task<IHttpActionResult> PostCity(City city)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Country.Add(country);
+            db.City.Add(city);
 
             try
             {
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
             catch (DbUpdateException)
             {
-                if (CountryExists(country.CountryId))
+                if (CityExists(city.CityId))
                 {
                     return Conflict();
                 }
@@ -97,23 +94,23 @@ namespace yungching_Demo.Areas
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = country.CountryId }, country);
+            return CreatedAtRoute("DefaultApi", new { id = city.CityId }, city);
         }
 
-        // DELETE: api/Countries/5
-        [ResponseType(typeof(Country))]
-        public IHttpActionResult DeleteCountry(string id)
+        // DELETE: api/Cities/5
+        [ResponseType(typeof(City))]
+        public async Task<IHttpActionResult> DeleteCity(string id)
         {
-            Country country = db.Country.Find(id);
-            if (country == null)
+            City city = await db.City.FindAsync(id);
+            if (city == null)
             {
                 return NotFound();
             }
 
-            db.Country.Remove(country);
-            db.SaveChanges();
+            db.City.Remove(city);
+            await db.SaveChangesAsync();
 
-            return Ok(country);
+            return Ok(city);
         }
 
         protected override void Dispose(bool disposing)
@@ -125,9 +122,9 @@ namespace yungching_Demo.Areas
             base.Dispose(disposing);
         }
 
-        private bool CountryExists(string id)
+        private bool CityExists(string id)
         {
-            return db.Country.Count(e => e.CountryId == id) > 0;
+            return db.City.Count(e => e.CityId == id) > 0;
         }
     }
 }

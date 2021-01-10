@@ -134,7 +134,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Areas\CountriesController.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
     <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
     <Compile Include="Areas\HelpPage\Controllers\HelpController.cs" />
@@ -163,6 +162,19 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Areas\Hotel\Controllers\CitiesController.cs" />
+    <Compile Include="Areas\Hotel\Controllers\CountriesController.cs" />
+    <Compile Include="Areas\Hotel\Controllers\HotelsController.cs" />
+    <Compile Include="Areas\Hotel\Controllers\SearchController.cs" />
+    <Compile Include="Areas\Hotel\HotelAreaRegistration.cs" />
+    <Compile Include="Areas\Hotel\Service\AgodaHotelService.cs" />
+    <Compile Include="Areas\Hotel\Service\ISupplierService.cs" />
+    <Compile Include="Areas\Hotel\ViewModels\SearchViewModels.cs" />
+    <Compile Include="Areas\Hotel\ViewModels\ProductViewModels.cs" />
+    <Compile Include="Areas\Hotel\Models\EntityPatial\City.cs" />
+    <Compile Include="Areas\Hotel\Models\EntityPatial\Country.cs" />
+    <Compile Include="Areas\Hotel\Models\EntityPatial\Hotel.cs" />
+    <Compile Include="Areas\Hotel\Service\IHotelService.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Entity\City.cs">
@@ -241,6 +253,7 @@
     <Content Include="Entity\HotelEntity.edmx.diagram">
       <DependentUpon>HotelEntity.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\Hotel\Views\web.config" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -264,7 +277,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Areas\Hotel\Data\" />
+    <Folder Include="Areas\Hotel\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
