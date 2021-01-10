@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
 using yungching_Demo.Areas.Hotel.Models;
+using yungching_Demo.Areas.Hotel.Service;
 using yungching_Demo.Entity;
 
 namespace yungching_Demo.Areas.Hotel.Controllers
@@ -27,8 +28,7 @@ namespace yungching_Demo.Areas.Hotel.Controllers
             {
                 return NotFound();
             }
-
-            var service = new SupplierFactory(supplierName).GetService();
+            var service = (IHotelService)UnityConfig.Container.Resolve(typeof(IHotelService), supplierName);
             var result = await service.GetHotelListPrice(countryId, cityId, date, days);
 
             return Ok(result);
