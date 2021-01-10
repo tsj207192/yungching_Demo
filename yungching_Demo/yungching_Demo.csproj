@@ -165,10 +165,16 @@
     <Compile Include="Areas\Hotel\Controllers\CitiesController.cs" />
     <Compile Include="Areas\Hotel\Controllers\CountriesController.cs" />
     <Compile Include="Areas\Hotel\Controllers\HotelsController.cs" />
+    <Compile Include="Areas\Hotel\Controllers\SearchController.cs" />
     <Compile Include="Areas\Hotel\HotelAreaRegistration.cs" />
+    <Compile Include="Areas\Hotel\Service\AgodaHotelService.cs" />
+    <Compile Include="Areas\Hotel\Service\ISupplierService.cs" />
+    <Compile Include="Areas\Hotel\ViewModels\SearchViewModels.cs" />
+    <Compile Include="Areas\Hotel\ViewModels\ProductViewModels.cs" />
     <Compile Include="Areas\Hotel\Models\EntityPatial\City.cs" />
     <Compile Include="Areas\Hotel\Models\EntityPatial\Country.cs" />
     <Compile Include="Areas\Hotel\Models\EntityPatial\Hotel.cs" />
+    <Compile Include="Areas\Hotel\Service\IHotelService.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Entity\City.cs">
