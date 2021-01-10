@@ -167,7 +167,9 @@
     <Compile Include="Areas\Hotel\Controllers\HotelsController.cs" />
     <Compile Include="Areas\Hotel\Controllers\SearchController.cs" />
     <Compile Include="Areas\Hotel\HotelAreaRegistration.cs" />
+    <Compile Include="Areas\Hotel\Models\SupplierModels.cs" />
     <Compile Include="Areas\Hotel\Service\AgodaHotelService.cs" />
+    <Compile Include="Areas\Hotel\Service\ExpediaHotelService.cs" />
     <Compile Include="Areas\Hotel\Service\ISupplierService.cs" />
     <Compile Include="Areas\Hotel\ViewModels\SearchViewModels.cs" />
     <Compile Include="Areas\Hotel\ViewModels\ProductViewModels.cs" />

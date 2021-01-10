@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Web;
 using yungching_Demo.Areas.Hotel.ViewModels;
 
 namespace yungching_Demo.Areas.Hotel.Service
@@ -45,7 +42,26 @@ namespace yungching_Demo.Areas.Hotel.Service
         public List<HotelListPrice> GetSupplierHotelList(string countryId, string cityId, string date, int days)
         {
             //呼叫供應商並取得查詢結果
-            return new List<HotelListPrice>();
+            return new List<HotelListPrice>()
+            {
+                new HotelListPrice
+                {
+                    Hotel = new Entity.Hotel()
+                    {
+                        HotelId = "TWTPE001",
+                        Name = "君悅飯店",
+                        Country = "TW",
+                        City = "TPE",
+                        Address = "台北市信義路",
+                        Phone = string.Empty
+                    },
+                    Price = new Price()
+                    {
+                        Amount = 3450.00M,
+                        Curr = "NTD"
+                    }
+                }
+            };
         }
 
         /// <summary>
@@ -58,7 +74,44 @@ namespace yungching_Demo.Areas.Hotel.Service
         public List<HotelPrice> GetSupplierHotel(string hotel, string date, int days)
         {
             //呼叫供應商並取得查詢結果
-            return new List<HotelPrice>();
+            return new List<HotelPrice>()
+            {
+              new HotelPrice
+              {
+                    Hotel = new Entity.Hotel()
+                    {
+                        HotelId = "TWTPE001",
+                        Name = "君悅飯店",
+                        Country = "TW",
+                        City = "TPE",
+                        Address = "台北市信義路",
+                        Phone = string.Empty
+                    },
+                    Products = new List<Product>()
+                    {
+                        new Product
+                        {
+                            Project = new Project
+                            {
+                                ProjectId = "S0117",
+                                ProjectName = "優惠專案",
+                                ProjectDesc = "<p>2人份早餐</p> <p>到店付款</p>"
+                            },
+                            Room = new Room
+                            {
+                                RoomId = "3",
+                                RoomName = "Grand Twin Room",
+                                RoomDesc = "<p>2張單人床</p>"
+                            },
+                            Price = new Price
+                            {
+                                Amount = 3450.00M,
+                                Curr = "NTD"
+                            }
+                        }
+                    }
+              }
+            };
         }
     }
 }
